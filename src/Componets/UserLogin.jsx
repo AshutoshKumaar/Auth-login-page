@@ -37,6 +37,9 @@ function UserLogin() {
 
     const handleLogout = () => {
         // Clear the local storage and set the user as logged out
+        localStorage.removeItem('fullName');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('password')
         setLoggedIn(true);
         googleLogout();
     }
