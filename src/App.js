@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import UserSignup from './Componets/UserSignup.jsx'
+import UserLogin from './Componets/UserLogin.jsx';
+// import Userdash from './Componets/Userdash.jsx';
+
 import './App.css';
 
 function App() {
+  const [checkLogged, setcheckLogged] = useState(false)
+
+  const handleSubmit = () => {
+    setcheckLogged(!checkLogged)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        checkLogged ? <UserSignup /> : <UserLogin />
+      }
+      <div>
+        <button onClick={handleSubmit}>{checkLogged ? 'Login' : 'Sign-up'}</button>
+      </div>
+
+
     </div>
   );
 }
